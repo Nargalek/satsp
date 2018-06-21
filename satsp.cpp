@@ -9,9 +9,9 @@
 using namespace std;
 
 int mile;
-double T=100000;
-double Td=3;
-int Tmin=0.0000001;
+double T=30;
+double Td=0.01;
+int Tmin=0.000001;
 
 void load(vector <int>&,vector <int>&, int&);
 void annealing();
@@ -58,25 +58,26 @@ int main(){
 		koszt(odleglosci, nrozwiazanie, mile, ndroga);
 	 if(ndroga<droga){
 	 	droga=ndroga;
-	 	cout<<" MNIEJSZE!"<<" droga: "<<droga<<" ndroga: "<<ndroga;
+	 	cout<<"MNIEJSZE!"<<" droga: "<<droga<<" ndroga: "<<ndroga;
 	 	for(int i=0;i<rozwiazanie.size();i++){
 	 		rozwiazanie[i]=nrozwiazanie[i];
 		 }
 
 	 }else if(ndroga>droga){
-	 	if(((ndroga-droga)/T)>=((float)rand()/RAND_MAX)){
+	 	if(((ndroga-droga)/T)<=((double)rand()/RAND_MAX)){
 	 		droga=ndroga;
 //	 	 	cout.setf(ios::fixed);
 //   		cout.setf(ios::showpoint);
 //			cout.precision(10);
 //			cout<<"\n dd: "<<dd<<"\n o: "<<o;
-		 	cout<<" Wieksze!"<<" droga: "<<droga<<" ndroga: "<<ndroga;
+		 	cout<<"Wieksze!"<<" droga: "<<droga<<" ndroga: "<<ndroga;
 			for(int i=0;i<rozwiazanie.size();i++){
 	 		rozwiazanie[i]=nrozwiazanie[i];
 		 }
-	 	
+	 	 
 	 }
 	 }
+	 
 	 if(droga<bestd){
 	 	bestd=droga;
 	 	for(int i=0;i<rozwiazanie.size();i++){
@@ -90,6 +91,7 @@ int main(){
 	
 	cout<<"\n";
 	//system("PAUSE");
+	cout<<"\nT: "<<T;
 	T-=Td;
 	Sleep(10);
 	}
@@ -99,7 +101,7 @@ int main(){
 	
 	
 	
-	cout<<"\n";
+	cout<<"\n Koniec! Zapisano wynik.";
 	system("PAUSE");
 	return 0;
 }
