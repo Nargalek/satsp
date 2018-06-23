@@ -9,8 +9,8 @@
 using namespace std;
 
 int mile;
-double T=30;
-double Td=0.01;
+double T=1000;
+double Td=0.1;
 int Tmin=0.000001;
 
 void load(vector <int>&,vector <int>&, int&);
@@ -64,7 +64,7 @@ int main(){
 		 }
 
 	 }else if(ndroga>droga){
-	 	if(((ndroga-droga)/T)<=((double)rand()/RAND_MAX)){
+	 	if((exp(-(droga-ndroga))/T)<=((double)rand()/RAND_MAX)){
 	 		droga=ndroga;
 //	 	 	cout.setf(ios::fixed);
 //   		cout.setf(ios::showpoint);
